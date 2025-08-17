@@ -407,6 +407,8 @@ html {
       & svg {
         position: relative;
         z-index: 2;
+        animation: moveArrow 1s ease-in-out infinite alternate;
+
       }
 
       &::before {
@@ -429,8 +431,9 @@ html {
         }
       }
     }
-
   }
+
+ 
 
   & .mainscreen-arrows {
     position: absolute;
@@ -533,6 +536,16 @@ html {
     }
   }
 }
+
+ @keyframes moveArrow {
+    0% {
+      transform: translateY(0);
+    }
+
+    100% {
+      transform: translateY(5px);
+    }
+  }
 
 .h2 {
   margin-bottom: 24px;
