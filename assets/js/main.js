@@ -1,14 +1,14 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   let sliderMainscreen = document.querySelector('.mainscreen-slider');
 
   if (sliderMainscreen) {
     var splide = new Splide(sliderMainscreen, {
-      type      : 'fade',
-      perPage   : 1,
-      gap       : 0,
-      perMove   : 1,
+      type: 'fade',
+      perPage: 1,
+      gap: 0,
+      perMove: 1,
       pagination: false,
-      arrows    : false, 
+      arrows: false,
     }).mount();
 
 
@@ -16,13 +16,13 @@ document.addEventListener('DOMContentLoaded', function() {
     let nextBtn = document.querySelector('.mainscreen-arrow__next');
 
     if (prevBtn) {
-      prevBtn.addEventListener('click', function() {
+      prevBtn.addEventListener('click', function () {
         splide.go('<');
       });
     }
 
     if (nextBtn) {
-      nextBtn.addEventListener('click', function() {
+      nextBtn.addEventListener('click', function () {
         splide.go('>');
       });
     }
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
       link.addEventListener("click", function (e) {
         e.preventDefault();
 
-  
+
         menuItems.forEach((el) => {
           if (el !== item) {
             el.classList.remove("active");
@@ -104,7 +104,7 @@ if (burger && menu) {
 }
 
 document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener('click', function(e) {
+  link.addEventListener('click', function (e) {
     const targetId = this.getAttribute('href').substring(1);
     const targetEl = document.getElementById(targetId);
     if (targetEl) {
@@ -120,5 +120,37 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   });
 });
 
+// Функция анимации числа
+function animateValue(el, start, end, duration) {
+  let startTimestamp = null;
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    el.textContent = Math.floor(progress * (end - start) + start);
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    }
+  };
+  window.requestAnimationFrame(step);
+}
 
- AOS.init();
+
+const items = document.querySelectorAll('.about-advantages__item-num');
+const observer = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+   
+      const endValue = parseInt(el.textContent.replace(/\D/g, ''), 10);
+      animateValue(el, 0, endValue, 1500); 
+      obs.unobserve(el); 
+    }
+  });
+}, {
+  threshold: 0.5 
+});
+
+items.forEach(item => observer.observe(item));
+
+
+AOS.init();
