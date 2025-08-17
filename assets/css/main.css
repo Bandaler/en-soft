@@ -479,9 +479,9 @@ html {
     overflow: hidden;
     height: 100vh;
 
-    @media(max-width:992px) {
+    /* @media(max-width:992px) {
       height: 100vmin;
-    }
+    } */
 
     & .mainscreen-slider__bg {
       position: absolute;
