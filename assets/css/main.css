@@ -433,7 +433,7 @@ html {
     }
   }
 
- 
+
 
   & .mainscreen-arrows {
     position: absolute;
@@ -537,15 +537,15 @@ html {
   }
 }
 
- @keyframes moveArrow {
-    0% {
-      transform: translateY(0);
-    }
-
-    100% {
-      transform: translateY(5px);
-    }
+@keyframes moveArrow {
+  0% {
+    transform: translateY(0);
   }
+
+  100% {
+    transform: translateY(5px);
+  }
+}
 
 .h2 {
   margin-bottom: 24px;
@@ -614,6 +614,16 @@ html {
             line-height: 72px;
             letter-spacing: -1.12px;
             margin-bottom: 12px;
+
+            & span {
+              color: var(--Blue-Active, #092EFC);
+              text-align: center;
+              font-size: 56px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 72px;
+              letter-spacing: -1.12px;
+            }
           }
 
           & .about-advantages__item-title {

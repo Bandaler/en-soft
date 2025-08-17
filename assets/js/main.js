@@ -135,7 +135,7 @@ function animateValue(el, start, end, duration) {
 }
 
 
-const items = document.querySelectorAll('.about-advantages__item-num');
+const items = document.querySelectorAll('.about-advantages__item-num span');
 const observer = new IntersectionObserver((entries, obs) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
